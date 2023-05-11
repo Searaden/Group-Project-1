@@ -1,0 +1,25 @@
+header {
+    background-color: teal;
+}
+
+main {
+    background-color: aqua;
+}
+
+section {
+    background-color: orange;
+}
+
+article {
+    display: flex;
+    flex: 1;
+}
+
+.card {
+    margin: 5px;
+    background-color: silver;
+}
+
+footer {
+    background-color: teal;
+}
