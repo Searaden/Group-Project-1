@@ -1,3 +1,8 @@
+// Var Selectors from HTML
+var seenEl = document.querySelector("#seen");
+
+//Movie List as variable
+
 // Random Movie Generator
 var randomMovies = []
 
@@ -10,3 +15,10 @@ var randomMovie = randomMovies[randomIndex];
 
 console.log("Random movie: " + randomMovie);
 
+//Seen Variable
+
+seenEl.addEventListener("click", function() {
+    //Saves movie to local storage and refreshes page
+    
+
+});
