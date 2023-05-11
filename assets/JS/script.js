@@ -9,3 +9,4 @@ var randomIndex = Math.floor(Math.random() * randomMovies.length);
 var randomMovie = randomMovies[randomIndex];
 
 console.log("Random movie: " + randomMovie);
+
