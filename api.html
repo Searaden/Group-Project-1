@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>API Key localStorage example</title>
+  </head>
+  <body>
+    <form id="api-key-form" style="display: none; flex-direction: column; width: 300px;">
+      <label for="api-key-1">OpenWeatherMap API Key:</label>
+      <input type="password" name="api-key-1" id="api-key-1" />
+      <label for="api-key-1">Other API Key:</label>
+      <input type="password" name="api-key-2" id="api-key-2" /><br />
+      <button type="submit">Add keys</button>
+    </form>
+    <script type="text/javascript">
+      var apiKeyForm =  document.getElementById('api-key-form');
+
+      var OmdbAPIKey = '';
+      var otherAPIKey = '';
+      // Get any saved keys on page load
+      loadAPIKeys();
+
+      // Loads API keys from localStorage
+      //   If they keys exist, then the form is hidden
+      function loadAPIKeys() {
+        var openWeatherMapAPIKey = localStorage.getItem('openWeatherMapAPIKey');
+        var otherAPIKey = localStorage.getItem('otherAPIKey');
+
+        // require both api keys before hiding the fields
+        if (!openWeatherMapAPIKey || !otherAPIKey) {
+          apiKeyForm.style.display = 'flex';
+          apiKeyForm.addEventListener('submit', handleFormSubmit);
+        } else {
+          apiKeyForm.style.display = 'none';
+          apiKeyForm.removeEventListener('submit', handleFormSubmit);
+        }
+      }
+
+      // Saves the API keys to localStorage
+      function saveAPIKeys(openWeatherMapAPIKey, otherAPIKey) {
+        localStorage.setItem('openWeatherMapAPIKey', openWeatherMapAPIKey);
+        localStorage.setItem('otherAPIKey', otherAPIKey);
+      }
+
+      // When the form is submitted, save the keys to localStorage and then load them into the app
+      function handleFormSubmit(event) {
+        event.preventDefault();
+        var apiKey1 = document.getElementById('api-key-1').value.trim();
+        var apiKey2 = document.getElementById('api-key-2').value.trim();
+
+        saveAPIKeys(apiKey1,apiKey2);
+        loadAPIKeys();
+      }
+    </script>
+  </body>
+</html>
