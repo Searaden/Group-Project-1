@@ -13,3 +13,6 @@ Next Steps:
 2. Add abilitiy to "like" a trailer creating a list of movies for the user
 3. Add search functionality to narrow scope
 4. 
+
+
+Greg checking in11
