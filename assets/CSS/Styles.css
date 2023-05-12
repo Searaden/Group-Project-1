@@ -10,6 +10,8 @@ main h2 {
     font-size: 400%;
     font-family: 'Playfair Display', serif;
     color: white;
+    margin-bottom: 25px;
+    margin-top: 15px;
 }
 
 header {
