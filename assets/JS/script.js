@@ -46,9 +46,24 @@ seenEl.addEventListener("click", function() {
 
 
 var main = document.querySelector('main');
-var apikey = prompt ('Please Submit API Key:');
-// 'twilight' being used as a placeholder movie, change 2to any movie or as a variable later
-fetch('https://www.omdbapi.com/?t=' + 'twilight' + '&apikey=' + apikey)
+
+var apiKey;
+
+init();
+
+function init () {
+    var storedKey = JSON.parse(localStorage.getItem('storedKey', apiKey));
+
+    if (storedKey === null) {
+        apiKey = prompt ('Please Submit API Key:');
+        localStorage.setItem('storedKey', JSON.stringify(apiKey))
+    } else {
+        apiKey = storedKey;
+    }
+}
+
+// 'twilight' being used as a placeholder movie, change to any movie or as a variable later
+fetch('https://www.omdbapi.com/?t=' + 'twilight' + '&apiKey=' + apiKey)
 .then(function (response) {
     return response.json();
 })
