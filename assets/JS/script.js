@@ -1,4 +1,4 @@
-// Var Selectors from HTML
+// Var Selectors from HTMLd
 var seenEl = document.querySelector("#seen");
 
 // Baseline movie array
