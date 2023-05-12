@@ -15,10 +15,20 @@ if (!randomMovies) {
 
 
 // Random Movie Generator
-var randomIndex = Math.floor(Math.random() * randomMovies.length);
-var randomMovie = randomMovies[randomIndex];
-
-console.log("Random movie: " + randomMovie);
+//Checks to see if movies have the seen value of "true"
+var unseenMovies = randomMovies.filter(function(movie) {
+    return !movie.seen;
+  });
+  
+  if (unseenMovies.length === 0) {
+    console.log("No unseen movies left!");
+    // applies a new movie
+  } else {
+    var randomIndex = Math.floor(Math.random() * unseenMovies.length);
+    var randomMovie = unseenMovies[randomIndex];
+  
+    console.log("Random movie: " + randomMovie.title);
+  }
 
 //Seen Variable. This will add a listener and save a variable to local storage
 seenEl.addEventListener("click", function() {
