@@ -22,3 +22,17 @@ seenEl.addEventListener("click", function() {
     
 
 });
+
+var main = document.querySelector('main');
+var apikey = prompt ('Please Submit API Key:');
+// 'twilight' being used as a placeholder movie, change to any movie or as a variable later
+fetch('https://www.omdbapi.com/?t=' + 'twilight' + '&apikey=' + apikey)
+.then(function (response) {
+    return response.json();
+})
+.then(function (data) {
+    console.log(data);
+    main.children[0].textContent = data.title;
+    main.children[1].src = data.Poster;
+    main.children[2].textContent = data.Plot;
+});
