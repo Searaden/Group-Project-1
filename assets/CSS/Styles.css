@@ -1,4 +1,5 @@
 body {
+<<<<<<< HEAD
     background-image: url("../IMG/stars.jpg");
     display: flex;
     flex-direction: column;
@@ -21,6 +22,93 @@ main {
     font-size: 25px;
     margin-right: 100px;
     margin-left: 100px;
+=======
+    font-family: Verdana, Tahoma, sans-serif;
+    margin: 10px;
+    background-image: url("../IMG/stars.jpg");
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    font-family: 'Bruno Ace';
+    font-size: 200%;
+    padding: 5px;
+    text-align: left;
+    background-color: #bbb6acd8;
+    padding-left: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+  header h1 {
+    color: #571414;
+    font-size: 200%;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+  
+  header p {
+    color:#062703;
+    font-size: 60%;
+    padding: 2px;
+    margin-top: 1%;
+  }
+main {
+    background-color: #bbb6acd8;
+    text-align: center;
+    margin-bottom: 1%;
+    padding-top: 1px;
+    padding-bottom: 1%;
+}
+
+#userRate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#userRate > * {
+    font-size: 25px;
+    margin-right: 100px;
+    margin-left: 100px;
+    transition: all 0.2s ease-in-out;
+    background-color: #ffffff90;
+}
+
+#seen {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#seen:hover {
+    cursor: pointer;
+    box-shadow: inset 0px 0px 30px #ffab0e, 0px 0px 30px #ffab0e;
+}
+
+#like, #dislike {
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#like {
+    padding-bottom: 5px;
+}
+
+#like:hover {
+    cursor: pointer;
+    box-shadow: inset 0px 0px 30px #20fdfd, 0px 0px 30px #20fdfd;
+}
+
+#dislike:hover {
+    cursor: pointer;
+    box-shadow: inset 0px 0px 30px #e62323,  0px 0px 30px #e62323;
+>>>>>>> ccd74d3514a4a3b3aafd317e38302a9d7051de52
 }
 
 section {
