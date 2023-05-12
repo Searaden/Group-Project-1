@@ -22,8 +22,6 @@ seenEl.addEventListener("click", function() {
     
 
 });
-<<<<<<< HEAD
-=======
 
 var main = document.querySelector('main');
 var apikey = prompt ('Please Submit API Key:');
@@ -38,4 +36,3 @@ fetch('https://www.omdbapi.com/?t=' + 'twilight' + '&apikey=' + apikey)
     main.children[1].src = data.Poster;
     main.children[2].textContent = data.Plot;
 });
->>>>>>> ccd74d3514a4a3b3aafd317e38302a9d7051de52
