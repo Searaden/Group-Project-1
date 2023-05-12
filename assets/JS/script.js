@@ -59,8 +59,7 @@ var main = document.querySelector('main');
 
 var apiKey;
 
-init();
-
+// Prompts user for API key if one is not already stored in localstorage
 function init () {
     var storedKey = JSON.parse(localStorage.getItem('storedKey', apiKey));
 
@@ -72,17 +71,44 @@ function init () {
     }
 }
 
+const omdbAPI = 'https://www.omdbapi.com/?t=';
+
+// Render random movie details the screen using data from OMDb API fetch
 // 'twilight' being used as a placeholder movie, change to any movie or as a variable later
-fetch('https://www.omdbapi.com/?t=' + 'twilight' + '&apiKey=' + apiKey)
-.then(function (response) {
-    return response.json();
-})
-.then(function (data) {
-    console.log(data);
-    main.children[0].textContent = data.Title;
-    main.children[1].src = data.Poster;
-    main.children[2].textContent = data.Plot;
-    main.children[3].textContent = "The IMDB Rating is: " + data.imdbRating;
-    main.children[4].textContent = "Rotten Tomatoe Score: " + data.Ratings[1].Value + "🍅";
-    main.children[5].textContent = "MetaCritic Score: " + data.Ratings[2].Value;
-});
+async function renderRandom() {
+    await fetch(omdbAPI + 'Twilight' + '&apiKey=' + apiKey)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        main.children[0].textContent = data.Title;
+        main.children[1].src = data.Poster;
+        main.children[2].textContent = data.Plot;
+        main.children[3].textContent = "The IMDB Rating is: " + data.imdbRating;
+        main.children[4].textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
+    });
+}
+
+// Render movie name and poster to the best of the worst using data from OMDb API fetch
+async function renderCards() { 
+    var movieCards = document.querySelector('article');
+    for (var i = 0; i < movieCards.children.length; i++) {
+        await fetch(omdbAPI + baselineMovies[i] + '&apiKey=' + apiKey)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            movieCards.children[i].textContent = data.Title;
+            
+            var img = document.createElement('img');
+            img.src = data.Poster;
+            movieCards.children[i].appendChild(img);
+        })
+    }
+}
+
+init();
+renderRandom();
+renderCards();
