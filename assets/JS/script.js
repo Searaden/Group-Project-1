@@ -79,7 +79,7 @@ fetch('https://www.omdbapi.com/?t=' + 'twilight' + '&apiKey=' + apiKey)
 })
 .then(function (data) {
     console.log(data);
-    main.children[0].textContent = data.title;
+    main.children[0].textContent = data.Title;
     main.children[1].src = data.Poster;
     main.children[2].textContent = data.Plot;
     main.children[3].textContent = "The IMDB Rating is: " + data.imdbRating;
