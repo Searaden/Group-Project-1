@@ -83,4 +83,5 @@ fetch('https://www.omdbapi.com/?t=' + 'twilight' + '&apiKey=' + apiKey)
     main.children[1].src = data.Poster;
     main.children[2].textContent = data.Plot;
     main.children[3].textContent = "The IMDB Rating is: " + data.imdbRating;
+    main.children[4].textContent = "Rotten Tomatoe Score: " + data.Ratings[1].Value + "🍅";
 });
