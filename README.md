@@ -1,6 +1,6 @@
 # Group-Project-1
 
-Just checking in with some changes to be applied
+// Just checking in with some changes to be applied //
 As a Sci-Fi fanatic, I want to create an app/website that will recommend a new movie for me to watch that I have not already seen so I can find new films based on my criteria entered.
 
 SCOPE:
@@ -17,3 +17,24 @@ Next Steps:
 
 Greg checking in11
 Test
+
+PKNOLA making notes to readme
+
+A good Readme.md file should have the following:
+    a. Know thier audience
+        1. End Users
+        2. Technical Users
+        3. Contributors
+
+     End Users = those looking to not waste time and money on bad movies
+     Technical Users = those coders or hackers that love nothing better to do but find bugs or place comments
+     Contributors = those who originally worked on the project and those after that made suggestions used to enhance it
+
+Use headers and bulleted list that are structured 
+    a. keeping each simple, short and sweet
+        1. what project is about
+        2. how to install or how to get started with it
+        3. how to get involved or collaborate on project
+        4. list technologies or frameworks used (if it is not obvious) and state what you found interesting or useful - 
+
+I put a link in the slack - we will re-write this readme file
