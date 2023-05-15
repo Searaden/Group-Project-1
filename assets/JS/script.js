@@ -104,10 +104,19 @@ async function renderCards() {
             
             var img = document.createElement('img');
             img.src = data.Poster;
-            movieCards.children[i].appendChild(img);
+            movieCards.children[i].append(img);
         })
     }
 }
+
+// Modal selectors
+var modal = document.querySelector(".modal");
+var closeButton = document.querySelector(".close");
+
+// Event listener to close modal
+closeButton.addEventListener("click", function() {
+    modal.style.display = "none";
+});
 
 init();
 renderRandom();
