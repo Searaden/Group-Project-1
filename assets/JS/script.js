@@ -92,7 +92,7 @@ const omdbAPI = 'https://www.omdbapi.com/?t=';
 // Render random movie details the screen using data from OMDb API fetch
 // 'twilight' being used as a placeholder movie, change to any movie or as a variable later
 async function renderRandom() {
-    await fetch(omdbAPI + randomMovie + '&apiKey=' + apiKey)
+    await fetch(omdbAPI + randomMovie + '&apiKey=' + apiKey[0])
     .then(function (response) {
         return response.json();
     })
@@ -102,7 +102,7 @@ async function renderRandom() {
         main.children[1].src = data.Poster;
         main.children[2].textContent = data.Plot;
         main.children[3].textContent = "The IMDB Rating is: " + data.imdbRating;
-        // main.children[4].textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
+        main.children[4].textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
     });
 }
 
@@ -112,7 +112,7 @@ async function renderRandom() {
 async function renderCards() { 
     var movieCards = document.querySelector('article');
     for (var i = 0; i < movieCards.children.length; i++) {
-        await fetch(omdbAPI + baselineMovies[i] + '&apiKey=' + apiKey)
+        await fetch(omdbAPI + baselineMovies[i] + '&apiKey=' + apiKey[0])
         .then(function (response) {
             return response.json();
         })
