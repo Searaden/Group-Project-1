@@ -117,9 +117,13 @@ async function renderCards() {
 var modal = document.querySelector(".modal");
 var closeButton = document.querySelector(".close");
 
+openButton.addEventListener('click', function() {
+    modal.style.display = 'block';
+})
+
 // Event listener to close modal
-closeButton.addEventListener("click", function() {
-    modal.style.display = "none";
+closeButton.addEventListener('click', function() {
+    modal.style.display = 'none';
 });
 
 init();
