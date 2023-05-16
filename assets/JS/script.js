@@ -22,6 +22,24 @@ var unseenMovies = randomMovies.filter(function(movie) {
   
   if (unseenMovies.length === 0) {
     console.log("No unseen movies left!");
+    
+    // Hide the content within the main section
+    var mainTitle = document.querySelector('main h2');
+    var mainPoster = document.querySelector('main img');
+    var mainDescription = document.querySelector('main #description');
+    var mainIMDB = document.querySelector('main #imdbRate');
+    var mainRottenTomatoes = document.querySelector('main #rottenTom');
+
+    mainTitle.style.display = "none";
+    mainPoster.style.display = "none";
+    mainDescription.style.display = "none";
+    mainIMDB.style.display = "none";
+    mainRottenTomatoes.style.display = "none";
+
+    // Display a message or perform any other desired action
+    var messageElement = document.createElement("p");
+    messageElement.textContent = "You have seen all the videos!";
+    document.querySelector('main').appendChild(messageElement);
     // applies a new movie
   } else {
     var randomIndex = Math.floor(Math.random() * unseenMovies.length);
