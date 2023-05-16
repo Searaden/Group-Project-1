@@ -75,8 +75,6 @@ h2 {
     transition: all 0.2s ease-in-out;
     background-color: #1b0c705e;
     border-color: #37235c;
-    border-style: inset;
-    
 }
 
 #seen {
@@ -107,7 +105,7 @@ h2 {
 
 #dislike:hover {
     cursor: pointer;
-    box-shadow: inset 0px 0px 30px #c9f584,  0px 0px 30px #e62323;
+    box-shadow: inset 0px 0px 30px #e62323,  0px 0px 30px #e62323;
 }
 
 section {
