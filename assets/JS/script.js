@@ -102,7 +102,9 @@ async function renderCards() {
         })
         .then(function (data) {
             console.log(data);
-            movieCards.children[i].textContent = data.Title;
+            var p = document.createElement('p');
+            p.textContent = data.Title;
+            movieCards.children[i].append(p);
             
             var img = document.createElement('img');
             img.src = data.Poster;
