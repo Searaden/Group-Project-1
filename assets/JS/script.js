@@ -2,7 +2,7 @@
 var seenEl = document.querySelector("#seen");
 
 // Baseline movie array
-var baselineMovies = ["Avengers", "Star Wars", "Jurassic Park", "The Matrix", "Indiana Jones"];
+var baselineMovies = ["The Room", "Cowboys vs Dinosaurs", "Troll 2", "Cats", "Teenage Mutant Ninja Turtles III", "The Gingerdead Man" , "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Silent Night Deadly Night 2" , "Killer Klowns From Outer Space"];
 
 // Get randomMovies from local storage if it exists, otherwise use baselineMovies
 var randomMovies = JSON.parse(localStorage.getItem("randomMovies"));
