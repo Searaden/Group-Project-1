@@ -19,16 +19,40 @@ var randomMovie;
 var unseenMovies = randomMovies.filter(function(movie) {        
     return !movie.seen;
   });
-  
+
+  // If all movies seen it displays the ending of the page
   if (unseenMovies.length === 0) {
     console.log("No unseen movies left!");
+    
+    // Hide the content within the main section
+    var mainTitle = document.querySelector('main h2');
+    var mainPoster = document.querySelector('main img');
+    var mainDescription = document.querySelector('main #description');
+    var mainIMDB = document.querySelector('main #imdbRate');
+    var mainRottenTomatoes = document.querySelector('main #rottenTom');
+    var mainUserRate = document.querySelector('main #userRate');
+        
+    mainTitle.style.visibility = "hidden";
+    mainPoster.style.visibility = "hidden";
+    mainDescription.style.visibility = "hidden";
+    mainIMDB.style.visibility = "hidden";
+    mainRottenTomatoes.style.visibility = "hidden";
+    mainUserRate.style.visibility = "hidden";
+   
+    
+    // Display a message or perform any other desired action
+    var messageElement = document.createElement("p");
+    messageElement.textContent = "You have seen all the videos!";
+    document.querySelector('main').appendChild(messageElement);
+
+    
     // applies a new movie
   } else {
     var randomIndex = Math.floor(Math.random() * unseenMovies.length);
     var randomMovie = unseenMovies[randomIndex];
   
     console.log("Random movie: " + randomMovie.title);
-  }
+}
 
 //Seen Variable. This will add a listener and save a variable to local storage
 seenEl.addEventListener("click", function() {
