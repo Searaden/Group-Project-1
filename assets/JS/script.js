@@ -54,6 +54,20 @@ var unseenMovies = randomMovies.filter(function(movie) {
     console.log("Random movie: " + randomMovie.title);
 }
 
+//Youtube API Implementation 
+const videoId = '9-dIdFXeFhs';
+
+function onYouTubeIframeAPIReady() {
+    new YT.Player('player', {
+      videoId: videoId,
+      playerVars: {
+        autoplay: 1, // Auto-start the video
+        controls: 1, // Show video controls
+      },
+    });
+  }
+
+  
 //Seen Variable. This will add a listener and save a variable to local storage
 seenEl.addEventListener("click", function() {
     // Saves the "seen" variable to local storage
@@ -81,18 +95,20 @@ seenEl.addEventListener("click", function() {
 
 var main = document.querySelector('main');
 
-var apiKey;
+var apiKeys = [];
 
 // Prompts user for API key if one is not already stored in localstorage
 function init () {
-    var storedKey = JSON.parse(localStorage.getItem('storedKey', apiKey));
+    var storedKeys = JSON.parse(localStorage.getItem('storedKey', apiKeys));
 
-    if (storedKey === null) {
-        apiKey = prompt ('Please Submit API Key:');
-        localStorage.setItem('storedKey', JSON.stringify(apiKey))
-    } else {
-        apiKey = storedKey;
-    }
+        if (storedKeys === null) {
+            apiKeys.push(prompt('Please Submit OMDb API Key:'));
+            apiKeys.push(prompt('Please Submit Youtube API Key:'));
+
+            localStorage.setItem('storedKey', JSON.stringify(apiKeys))
+        } else {
+            apiKeys = storedKeys;
+        }
 }
 
 const omdbAPI = 'https://www.omdbapi.com/?t=';
@@ -126,7 +142,9 @@ async function renderCards() {
         })
         .then(function (data) {
             console.log(data);
-            movieCards.children[i].textContent = data.Title;
+            var p = document.createElement('p');
+            p.textContent = data.Title;
+            movieCards.children[i].append(p);
             
             var img = document.createElement('img');
             img.src = data.Poster;
@@ -139,11 +157,16 @@ async function renderCards() {
 var modal = document.querySelector(".modal");
 var closeButton = document.querySelector(".close");
 
+// openButton.addEventListener('click', function() {
+//     modal.style.display = 'block';
+// })
+
 // Event listener to close modal
-closeButton.addEventListener("click", function() {
-    modal.style.display = "none";
+closeButton.addEventListener('click', function() {
+    modal.style.display = 'none';
 });
 
 init();
 renderRandom();
 renderCards();
+
