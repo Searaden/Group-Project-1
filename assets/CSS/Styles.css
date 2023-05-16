@@ -121,18 +121,17 @@ section {
 
 article {
     display: flex;
-    flex: 1;
 }
 
 .card {
     margin: 5px;
     background-color: silver;
-    width: 100%;
+    flex: 1;
 }
 
-img {
-    max-width: 300px;
-    max-height: 300px;
+.card img {
+    width: 100%;
+    object-fit: contain;
 }
 
 footer {
