@@ -30,6 +30,20 @@ var unseenMovies = randomMovies.filter(function(movie) {
     console.log("Random movie: " + randomMovie.title);
   }
 
+//Youtube API Implementation 
+const videoId = '9-dIdFXeFhs';
+
+function onYouTubeIframeAPIReady() {
+    new YT.Player('player', {
+      videoId: videoId,
+      playerVars: {
+        autoplay: 1, // Auto-start the video
+        controls: 1, // Show video controls
+      },
+    });
+  }
+
+  
 //Seen Variable. This will add a listener and save a variable to local storage
 seenEl.addEventListener("click", function() {
     // Saves the "seen" variable to local storage
@@ -125,3 +139,4 @@ closeButton.addEventListener("click", function() {
 init();
 renderRandom();
 renderCards();
+
