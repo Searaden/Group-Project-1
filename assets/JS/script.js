@@ -71,18 +71,20 @@ seenEl.addEventListener("click", function() {
 
 var main = document.querySelector('main');
 
-var apiKey;
+var apiKeys = [];
 
 // Prompts user for API key if one is not already stored in localstorage
 function init () {
-    var storedKey = JSON.parse(localStorage.getItem('storedKey', apiKey));
+    var storedKeys = JSON.parse(localStorage.getItem('storedKey', apiKeys));
 
-    if (storedKey === null) {
-        apiKey = prompt ('Please Submit API Key:');
-        localStorage.setItem('storedKey', JSON.stringify(apiKey))
-    } else {
-        apiKey = storedKey;
-    }
+        if (storedKeys === null) {
+            apiKeys.push(prompt('Please Submit OMDb API Key:'));
+            apiKeys.push(prompt('Please Submit Youtube API Key:'));
+
+            localStorage.setItem('storedKey', JSON.stringify(apiKeys))
+        } else {
+            apiKeys = storedKeys;
+        }
 }
 
 const omdbAPI = 'https://www.omdbapi.com/?t=';
@@ -131,9 +133,13 @@ async function renderCards() {
 var modal = document.querySelector(".modal");
 var closeButton = document.querySelector(".close");
 
+// openButton.addEventListener('click', function() {
+//     modal.style.display = 'block';
+// })
+
 // Event listener to close modal
-closeButton.addEventListener("click", function() {
-    modal.style.display = "none";
+closeButton.addEventListener('click', function() {
+    modal.style.display = 'none';
 });
 
 init();
