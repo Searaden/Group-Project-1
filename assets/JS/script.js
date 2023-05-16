@@ -150,11 +150,11 @@ async function renderCards() {
 // Modal selectors
 var modal = document.querySelector(".modal");
 var closeButton = document.querySelector(".close");
-var openButton = document.querySelector('.open');
+var openButton = document.querySelector('#trailer');
 
-// openButton.addEventListener('click', function() {
-//     modal.style.display = 'block';
-// })
+openButton.addEventListener('click', function() {
+    modal.style.display = 'block';
+})
 
 // Event listener to close modal
 closeButton.addEventListener('click', function() {
