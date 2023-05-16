@@ -71,19 +71,19 @@ seenEl.addEventListener("click", function() {
 
 var main = document.querySelector('main');
 
-var apiKeys = [];
+var apiKey = [];
 
 // Prompts user for API key if one is not already stored in localstorage
 function init () {
-    var storedKeys = JSON.parse(localStorage.getItem('storedKey', apiKeys));
+    var storedKeys = JSON.parse(localStorage.getItem('storedKey', apiKey));
 
         if (storedKeys === null) {
-            apiKeys.push(prompt('Please Submit OMDb API Key:'));
-            apiKeys.push(prompt('Please Submit Youtube API Key:'));
+            apiKey.push(prompt('Please Submit OMDb API Key:'));
+            apiKey.push(prompt('Please Submit Youtube API Key:'));
 
-            localStorage.setItem('storedKey', JSON.stringify(apiKeys))
+            localStorage.setItem('storedKey', JSON.stringify(apiKey))
         } else {
-            apiKeys = storedKeys;
+            apiKey = storedKeys;
         }
 }
 
@@ -102,7 +102,7 @@ async function renderRandom() {
         main.children[1].src = data.Poster;
         main.children[2].textContent = data.Plot;
         main.children[3].textContent = "The IMDB Rating is: " + data.imdbRating;
-        main.children[4].textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
+        // main.children[4].textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
     });
 }
 
@@ -132,6 +132,7 @@ async function renderCards() {
 // Modal selectors
 var modal = document.querySelector(".modal");
 var closeButton = document.querySelector(".close");
+var openButton = document.querySelector('.open');
 
 // openButton.addEventListener('click', function() {
 //     modal.style.display = 'block';
