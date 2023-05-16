@@ -38,3 +38,34 @@ Use headers and bulleted list that are structured
         4. list technologies or frameworks used (if it is not obvious) and state what you found interesting or useful - 
 
 I put a link in the slack - we will re-write this readme file
+
+<h2> ELEVATOR PITCH </h2>
+
+<h3> CONCEPT </H3>
+* Concept
+* 
+* Motivation for development
+* 
+* User Story
+* 
+
+<h3> PROCESS </h3>
+* Technologies used
+* 
+* BreakDown of tasks and roles
+* 
+* Challenges
+* 
+* Successes
+* 
+
+<h3> DEMO </h3>
+* Presented by:
+
+<h3> DIRECTION FOR FUTURE DEVELPOMENT </h3>
+* 
+<h3> LINKS </h3>
+* Deployed site
+* 
+* Github Reop
+* 
