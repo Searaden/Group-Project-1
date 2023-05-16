@@ -13,10 +13,10 @@ if (!randomMovies) {
   localStorage.setItem("randomMovies", JSON.stringify(randomMovies));
 }
 
-
+var randomMovie;
 // Random Movie Generator
 //Checks to see if movies have the seen value of "true"
-var unseenMovies = randomMovies.filter(function(movie) {
+var unseenMovies = randomMovies.filter(function(movie) {        
     return !movie.seen;
   });
   
@@ -76,7 +76,7 @@ const omdbAPI = 'https://www.omdbapi.com/?t=';
 // Render random movie details the screen using data from OMDb API fetch
 // 'twilight' being used as a placeholder movie, change to any movie or as a variable later
 async function renderRandom() {
-    await fetch(omdbAPI + 'Twilight' + '&apiKey=' + apiKey)
+    await fetch(omdbAPI + randomMovie + '&apiKey=' + apiKey)
     .then(function (response) {
         return response.json();
     })
@@ -89,6 +89,8 @@ async function renderRandom() {
         main.children[4].textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
     });
 }
+
+
 
 // Render movie name and poster to the best of the worst using data from OMDb API fetch
 async function renderCards() { 
