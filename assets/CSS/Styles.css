@@ -64,7 +64,6 @@ h2 {
  #userRate {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 #userRate > * {
@@ -75,10 +74,10 @@ h2 {
     transition: all 0.2s ease-in-out;
     background-color: #1b0c705e;
     border-color: #37235c;
+    border-radius: 8px;
 }
 
 #seen {
-    border-radius: 8px;
     padding: 10px;
 }
 
@@ -88,14 +87,9 @@ h2 {
 }
 
 #trailer, #reroll {
-    border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-#trailer {
-    padding-bottom: 5px;
 }
 
 #trailer:hover {
@@ -124,14 +118,20 @@ article {
 }
 
 .card {
+    display: flex;
+    flex-direction: column;
     margin: 5px;
     background-color: silver;
-    flex: 1;
+}
+
+.card p {
+    margin: 0;
 }
 
 .card img {
     width: 100%;
     object-fit: contain;
+    margin-top: auto;
 }
 
 footer {
@@ -156,16 +156,19 @@ footer {
   }
   
   .modal-content {
-    background-color: #fefefe;
+    background-color: #000000;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888888;
     width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
   }
   
   .close {
     color: #aaaaaa;
-    float: right;
+    text-align: right;
     font-size: 28px;
     font-weight: bold;
   }
@@ -173,4 +176,27 @@ footer {
   .close:hover {
     color: black;
     cursor: pointer;
+  }
+
+  #modalTitle {
+    text-align: center;
+  }
+
+  #player {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #c0c0c0;
+  }
+
+  @media screen and (max-width: 768px){
+    #userRate {
+        flex-wrap: wrap;
+    }
+
+    #userRate > * {
+        width: 50%;
+        height: 2em;
+        margin: 5px;
+    }
   }
