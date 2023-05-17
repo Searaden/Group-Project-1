@@ -24,11 +24,11 @@ var unseenMovies = randomMovies.filter(function(movie) {
     console.log("No unseen movies left!");
     
     // Hide the content within the main section
-    var mainTitle = document.querySelector('main h2');
-    var mainPoster = document.querySelector('main img');
-    var mainDescription = document.querySelector('main #description');
-    var mainIMDB = document.querySelector('main #imdbRate');
-    var mainRottenTomatoes = document.querySelector('main #rottenTom');
+    var mainTitle = document.querySelector('#randomTitle');
+    var mainPoster = document.querySelector('#randomPoster');
+    var mainDescription = document.querySelector('#description');
+    var mainIMDB = document.querySelector('#imdbRate');
+    var mainRottenTomatoes = document.querySelector('#rottenTom');
 
     mainTitle.style.display = "none";
     mainPoster.style.display = "none";
@@ -108,7 +108,6 @@ function init () {
 const omdbAPI = 'https://www.omdbapi.com/?t=';
 
 // Render random movie details the screen using data from OMDb API fetch
-// 'twilight' being used as a placeholder movie, change to any movie or as a variable later
 async function renderRandom() {
     if (randomMovie !== undefined){
         await fetch(omdbAPI + randomMovie + '&apiKey=' + apiKey[0])
@@ -118,12 +117,13 @@ async function renderRandom() {
         .then(function (data) {
             console.log(data);
             main.children[0].textContent = data.Title;
+            modalTitle.textContent = data.Title;
             main.children[1].src = data.Poster;
             main.children[2].textContent = data.Plot;
             main.children[3].textContent = "The IMDB Rating is: " + data.imdbRating;
             main.children[4].textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
         })} else {
-            console.log("no movies left")
+            console.log("no movies left");
     };
 }
 
@@ -154,7 +154,9 @@ async function renderCards() {
 var modal = document.querySelector(".modal");
 var closeButton = document.querySelector(".close");
 var openButton = document.querySelector('#trailer');
+var modalTitle = document.querySelector('#modalTitle');
 
+// Event listener to open modal to view trailer
 openButton.addEventListener('click', function() {
     modal.style.display = 'block';
 })
@@ -167,4 +169,3 @@ closeButton.addEventListener('click', function() {
 init();
 renderRandom();
 renderCards();
-
