@@ -152,6 +152,7 @@ var modal = document.querySelector(".modal");
 var closeButton = document.querySelector(".close");
 var openButton = document.querySelector('#trailer');
 
+// Event listener to open modal to view trailer
 openButton.addEventListener('click', function() {
     modal.style.display = 'block';
 })
