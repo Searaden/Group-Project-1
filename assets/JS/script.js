@@ -2,7 +2,7 @@
 var seenEl = document.querySelector("#seen");
 
 // Baseline movie array
-var baselineMovies = ["The Room", "Cowboys vs Dinosaurs", "Troll 2", "Cats", "Teenage Mutant Ninja Turtles III", "The Gingerdead Man" , "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Silent Night Deadly Night 2" , "Killer Klowns From Outer Space"];
+var baselineMovies = ["The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"];
 
 // Get randomMovies from local storage if it exists, otherwise use baselineMovies
 var randomMovies = JSON.parse(localStorage.getItem("randomMovies"));
@@ -110,18 +110,21 @@ const omdbAPI = 'https://www.omdbapi.com/?t=';
 // Render random movie details the screen using data from OMDb API fetch
 // 'twilight' being used as a placeholder movie, change to any movie or as a variable later
 async function renderRandom() {
-    await fetch(omdbAPI + randomMovie + '&apiKey=' + apiKey[0])
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-        main.children[0].textContent = data.Title;
-        main.children[1].src = data.Poster;
-        main.children[2].textContent = data.Plot;
-        main.children[3].textContent = "The IMDB Rating is: " + data.imdbRating;
-        main.children[4].textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
-    });
+    if (randomMovie !== undefined){
+        await fetch(omdbAPI + randomMovie + '&apiKey=' + apiKey[0])
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            main.children[0].textContent = data.Title;
+            main.children[1].src = data.Poster;
+            main.children[2].textContent = data.Plot;
+            main.children[3].textContent = "The IMDB Rating is: " + data.imdbRating;
+            main.children[4].textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
+        })} else {
+            console.log("no movies left")
+    };
 }
 
 
