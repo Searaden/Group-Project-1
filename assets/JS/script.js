@@ -153,7 +153,14 @@ var player = undefined;
 var movieIndex = randomMovies.indexOf(randomMovie);
 const youtubeAPI = 'https://www.googleapis.com/youtube/v3/videos?';
 
-// Youtube iFrame funciton for embeded player
+// Loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// Youtube IFrame funciton for embeded player
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
     videoId: movieIDs[movieIndex],
