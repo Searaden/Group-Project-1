@@ -49,73 +49,22 @@ var unseenMovies = randomMovies.filter(function(movie) {
     console.log("Random movie: " + randomMovie.title);
   }
 
-//Youtube API Implementation 
+// Movie trailer list: "The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"
+const movieIDs = ['9-dIdFXeFhs', 'CkNB0w1fYKk', 'jE5dJDgZ644', 'nf2K_645qtw', 'QITzuunu-SU', 'ETiSMS4i1as']
+var player;
+var movieIndex;
 
 // onYouTubeIframeAPIReady
+function onYouTubeIframeAPIReady()  {
+    movieIndex = randomMovies.indexOf(randomMovie);
 
-
-function roomReady () {
-    new YT.Player('player', {
-      videoId: '9-dIdFXeFhs',
+    player = new YT.Player('player', {
+      videoId: movieIDs[movieIndex],
       playerVars: {
-        autoplay: 1, // Auto-start the video
         controls: 1, // Show video controls
       },
     });
-  }
-  
-
-function troll2Ready() {
-    new YT.Player('player', {
-      videoId: 'CkNB0w1fYKk',
-      playerVars: {
-        autoplay: 1, // Auto-start the video
-        controls: 1, // Show video controls
-      },
-    });
-  }
-
-  function birdemicReady() {
-      new YT.Player('player', {
-        videoId: 'jE5dJDgZ644',
-        playerVars: {
-          autoplay: 1, // Auto-start the video
-          controls: 1, // Show video controls
-        },
-      });
-    }
-
-function jawsReady() {
-    new YT.Player('player', {
-      videoId: 'nf2K_645qtw',
-      playerVars: {
-        autoplay: 1, // Auto-start the video
-        controls: 1, // Show video controls
-      },
-    });
-  }
-
-function wickerReady() {
-    new YT.Player('player', {
-      videoId: 'QITzuunu-SU',
-      playerVars: {
-        autoplay: 1, // Auto-start the video
-        controls: 1, // Show video controls
-      },
-    });
-  }
-
-function klownsReady() {
-    new YT.Player('player', {
-      videoId: 'ETiSMS4i1as',
-      playerVars: {
-        autoplay: 1, // Auto-start the video
-        controls: 1, // Show video controls
-      },
-    });
-  }
-
-
+}
   
 //Seen Variable. This will add a listener and save a variable to local storage
 seenEl.addEventListener("click", function() {
@@ -224,6 +173,7 @@ openButton.addEventListener('click', function() {
 
 // Event listener to close modal
 closeButton.addEventListener('click', function() {
+    player.stopVideo();
     modal.style.display = 'none';
 });
 
