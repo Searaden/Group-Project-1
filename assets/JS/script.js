@@ -51,11 +51,14 @@ var unseenMovies = randomMovies.filter(function(movie) {
 // Movie trailer list: "The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"
 const movieIDs = ['9-dIdFXeFhs', 'CkNB0w1fYKk', 'jE5dJDgZ644', 'nf2K_645qtw', 'QITzuunu-SU', 'ETiSMS4i1as']
 var player;
+var movieIndex;
 
 // onYouTubeIframeAPIReady
-function onYouTubeIframeAPIReady(movieID)  {
+function onYouTubeIframeAPIReady()  {
+    movieIndex = randomMovies.indexOf(randomMovie);
+
     player = new YT.Player('player', {
-      videoId: '9-dIdFXeFhs',
+      videoId: movieIDs[movieIndex],
       playerVars: {
         controls: 1, // Show video controls
       },
@@ -84,8 +87,6 @@ seenEl.addEventListener("click", function() {
     // Reloads the page to reflect the changes
     location.reload();
 });
-
-
 
 var main = document.querySelector('main');
 
