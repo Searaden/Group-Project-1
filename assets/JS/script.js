@@ -1,13 +1,33 @@
 // Var Selectors from HTMLd
-var seenEl = document.querySelector("#seen");
-var rerollEl = document.querySelector('#reroll');
+var main = document.querySelector('main');
+var mainTitle = document.querySelector('#randomTitle');
+var mainPoster = document.querySelector('#randomPoster');
+var mainDescription = document.querySelector('#description');
+var mainIMDB = document.querySelector('#imdbRate');
+var mainRottenTomatoes = document.querySelector('#rottenTom');
 var trailerButton = document.querySelector('#trailer');
 var seenButton = document.querySelector('#seen');
 var rerollButton = document.querySelector('#reroll');
+var movieCards = document.querySelector('article');
+var modalContent = document.querySelector('.modal-content');
+var modal = document.querySelector(".modal");
+var closeButton = document.querySelector(".close");
+var openButton = document.querySelector('#trailer');
+var modalTitle = document.querySelector('#modalTitle');
 
+// API URLs constants
+const omdbAPI = 'https://www.omdbapi.com/?t=';
+const youtubeAPI = 'https://www.googleapis.com/youtube/v3/videos?';
 
-// Baseline movie array
-var baselineMovies = ["The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"];
+// Global variable initalization
+var randomMovie;
+var apiKey = [];
+var player = undefined;
+var movieIndex = randomMovies.indexOf(randomMovie);
+
+// Baseline movie array and respective IDs
+const baselineMovies = ["The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"];
+const movieIDs = ['9-dIdFXeFhs', 'CkNB0w1fYKk', 'jE5dJDgZ644', 'opiCMIN3PNg', 'QITzuunu-SU', 'ETiSMS4i1as']
 
 // Get randomMovies from local storage if it exists, otherwise use baselineMovies
 var randomMovies = JSON.parse(localStorage.getItem("randomMovies"));
@@ -18,7 +38,6 @@ if (!randomMovies) {
   localStorage.setItem("randomMovies", JSON.stringify(randomMovies));
 }
 
-var randomMovie;
 // Random Movie Generator
 //Checks to see if movies have the seen value of "true"
 var unseenMovies = randomMovies.filter(function(movie) {        
@@ -32,12 +51,6 @@ var unseenMovies = randomMovies.filter(function(movie) {
     rerollButton.style.display = "none";
     
     // Hide the content within the main section
-    var mainTitle = document.querySelector('#randomTitle');
-    var mainPoster = document.querySelector('#randomPoster');
-    var mainDescription = document.querySelector('#description');
-    var mainIMDB = document.querySelector('#imdbRate');
-    var mainRottenTomatoes = document.querySelector('#rottenTom');
-
     mainTitle.style.display = "none";
     mainPoster.style.display = "none";
     mainDescription.style.display = "none";
@@ -50,7 +63,7 @@ var unseenMovies = randomMovies.filter(function(movie) {
     messageElement.style.color = "white";
     messageElement.style.fontSize = "50px";
     messageElement.style.fontWeight = "Bolder";
-    document.querySelector('main').appendChild(messageElement);
+    main.appendChild(messageElement);
     // applies a new movie
   } else {
     var randomIndex = Math.floor(Math.random() * unseenMovies.length);
@@ -58,7 +71,7 @@ var unseenMovies = randomMovies.filter(function(movie) {
   }
   
 //Seen Variable. This will add a listener and save a variable to local storage
-seenEl.addEventListener("click", function() {
+seenButton.addEventListener("click", function() {
     // Saves the "seen" variable to local storage
     localStorage.setItem("seen", "true");
 
@@ -81,32 +94,25 @@ seenEl.addEventListener("click", function() {
 });
 
 //Refoll Variable. This will add a listener for rerolling to the next movie
-rerollEl.addEventListener("click", function() 
+rerollButton.addEventListener("click", function() 
 {
- 
   // Reloads the page to reflect the changes
   location.reload();
 });
-
-var main = document.querySelector('main');
-
-var apiKey = [];
 
 // Prompts user for API key if one is not already stored in localstorage
 function init () {
     var storedKeys = JSON.parse(localStorage.getItem('storedKey', apiKey));
 
-        if (storedKeys === null) {
-            apiKey.push(prompt('Please Submit OMDb API Key:'));
-            apiKey.push(prompt('Please Submit Youtube API Key:'));
+    if (storedKeys === null) {
+        apiKey.push(prompt('Please Submit OMDb API Key:'));
+        apiKey.push(prompt('Please Submit Youtube API Key:'));
 
-            localStorage.setItem('storedKey', JSON.stringify(apiKey))
-        } else {
-            apiKey = storedKeys;
-        }
+        localStorage.setItem('storedKey', JSON.stringify(apiKey))
+    } else {
+        apiKey = storedKeys;
+    }
 }
-
-const omdbAPI = 'https://www.omdbapi.com/?t=';
 
 // Render random movie details the screen using data from OMDb API fetch
 async function renderRandom() {
@@ -128,7 +134,6 @@ async function renderRandom() {
 
 // Render movie name and poster to the best of the worst using data from OMDb API fetch
 async function renderCards() { 
-    var movieCards = document.querySelector('article');
     for (var i = 0; i < movieCards.children.length; i++) {
         await fetch(omdbAPI + baselineMovies[i] + '&apiKey=' + apiKey[0])
         .then(function (response) {
@@ -145,20 +150,6 @@ async function renderCards() {
         })
     }
 }
-
-// Movie trailer list: "The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"
-const movieIDs = ['9-dIdFXeFhs', 'CkNB0w1fYKk', 'jE5dJDgZ644', 'opiCMIN3PNg', 'QITzuunu-SU', 'ETiSMS4i1as']
-var modalContent = document.querySelector('.modal-content');
-var player = undefined;
-var movieIndex = randomMovies.indexOf(randomMovie);
-const youtubeAPI = 'https://www.googleapis.com/youtube/v3/videos?';
-
-// Loads the IFrame Player API code asynchronously.
-var tag = document.createElement('script');
-
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // Youtube IFrame funciton for embeded player
 function onYouTubeIframeAPIReady() {
@@ -186,12 +177,6 @@ async function renderYTData() {
         modalContent.append(p2);
     })
 }
-
-// Modal selectors
-var modal = document.querySelector(".modal");
-var closeButton = document.querySelector(".close");
-var openButton = document.querySelector('#trailer');
-var modalTitle = document.querySelector('#modalTitle');
 
 // Event listener to open modal to view trailer
 openButton.addEventListener('click', function() {
