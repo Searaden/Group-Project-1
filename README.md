@@ -1,127 +1,66 @@
-# <Your-Project-Title>
+# Project Hyperion!
 
+## User Story 
+- As an enjoyer of cult classic movies, I want to be able to discover and receive recommendations for cult classic movies so that I can easily find and watch interesting films without spending excessive time searching for them, while also seeing their ratings and trailers, all in one place.
+---
 ## Description
 
 Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 
 - What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
+    * We developed this app because all of us have spent countless hours scrolling through netflix or other streaming applications, without ever finding anything to watch. We wanted to simplify this so that we can spend more time watching movies, and less time searching for a cult classic movie to watch.
+ 
+- Why did you build this project?
+    * We decided to create this app so that everyone else can focus on watching movies, instead of googling movies to watch. This way you can spend more time enjoying quality time with your loved ones
 - What problem does it solve?
+    * It solves the problem of spending countless hours (over a period of time) scrolling to FIND a movie, instead of just watching the movies. Leaving more time to watch more movies.
 - What did you learn?
-
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [](#)
-  - [Description](#description)
-  - [Table of Contents (Optional)](#table-of-contents-optional)
-  - [Usage](#usage)
-  - [Credits](#credits)
-  - [License](#license)
-  - [Future-Development](#future-development)
-  - [Elevator-Pitch](#elevator-pitch)
+    * The most important thing we learned was how to work together. Committing through github as a group was probably the most difficult task. Learning how to respect each others time, and not commit over each other was the most difficult.
+    * Secondly, we learned how to use two different API's (OMDB and Youtube). Both came with their own seperate challenges, but we ultimately were able to get through them together, as a team.
+    * The most fascinating thing we learned was how to imbed youtube links into a modal, and link videos to our applications/websites!
+---
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+We tried to keep the website as simplistic as possible for the user.
+- This is the default webpage you will see when you open the site (Movie may be different)
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
+![Alt Text](/assets/IMG/Web1.png)
+![Alt Text](/assets/IMG/Web2.png)
 
-![alt text](assets/images/screenshot.png)
+- To pull up the trailer you would click the "See Trailer" Button (Circled in white).
 
-## Credits
+![Alt Text](/assets/IMG/Web3.png)
 
-List your collaborators, if any, with links to their GitHub profiles.
+- To reroll to another movie, you would click either the "Seen it" (Saves to your Local Storage so that it doesn't appear again), or "Reroll Movie" to just shuffle again (without adding to the Local Storage)
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
-
-## License
-
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+![Alt Text](/assets/IMG/Web4.png)
 
 ---
+## Credits
 
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
+#### Alex Nguyen - https://github.com/monstergog
+#### Luis Rosado - https://github.com/Lrosa0126
+#### Jacob Norris - https://github.com/Searaden
+#### Gregory Pellet - https://github.com/GrPellet
+#### Pamela Nola - https://github.com/pknola
+
+
+
+---
 
 
 ## Future-Development
 
-If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+- In the future, we want to add the entire library that is available on OMDB. We want to be able to add a genre link, so that we arent focusing on just the list of 6 movies that we added. By adding the entire list of genres, we would have an almost limitless amount of movies. 
+- We also want to add a dynamic way to add youtube links, instead of us having to manually apply each one.
 
+---
 ## Elevator-Pitch
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+Hyperion is an app that we created to take the thought away from enjoying cult movies without having to do the research yourself! Instead of taking the time to have to look up reviews, and then find trailers, we have streamlined the process so that everything is taken out of your hands, and into ours. Now you can find cult classic titles, trailers, plots, and even ratings at the click of the button.
 
 
-// Just checking in with some changes to be applied //
-As a bad movie fanatic, I want to create an app/website that will recommend a new movie for me to watch that I have not already seen so I can find new films based on my criteria entered.
-
-SCOPE:
-
-1. See random movies sugestions with description from OMDB
-2. See location of theaters near you from google maps
-
-Next Steps:
-1. Add trailers rather than movie image
-2. Add abilitiy to "like" a trailer creating a list of movies for the user
-3. Add search functionality to narrow scope
-4. 
 
 
-Greg checking in11
-Test
 
-PKNOLA making notes to readme
-
-A good Readme.md file should have the following:
-    a. Know thier audience
-        1. End Users
-        2. Technical Users
-        3. Contributors
-
-     End Users = those looking to not waste time and money on bad movies
-     Technical Users = those coders or hackers that love nothing better to do but find bugs or place comments
-     Contributors = those who originally worked on the project and those after that made suggestions used to enhance it
-
-Use headers and bulleted list that are structured 
-    a. keeping each simple, short and sweet
-        1. what project is about
-        2. how to install or how to get started with it
-        3. how to get involved or collaborate on project
-        4. list technologies or frameworks used (if it is not obvious) and state what you found interesting or useful - 
-
-I put a link in the slack - we will re-write this readme file
-
-<h2> ELEVATOR PITCH </h2>
-
-<h3> CONCEPT </H3>
-* Concept
-* 
-* Motivation for development
-* 
-* User Story
-* 
-
-<h3> PROCESS </h3>
-* Technologies used
-* 
-* BreakDown of tasks and roles
-* 
-* Challenges
-* 
-* Successes
-* 
-
-<h3> DEMO </h3>
-* Presented by:
-
-<h3> DIRECTION FOR FUTURE DEVELPOMENT </h3>
-* 
-<h3> LINKS </h3>
-* Deployed site
-* 
-* Github Reop
-* 
