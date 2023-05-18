@@ -1,21 +1,27 @@
 // Movie trailer list: "The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"
 const movieIDs = ['9-dIdFXeFhs', 'CkNB0w1fYKk', 'jE5dJDgZ644', 'opiCMIN3PNg', 'QITzuunu-SU', 'ETiSMS4i1as']
-var player;
+var modalContent = document.querySelector('.modal-content')
+var player = undefined;
 var movieIndex;
 
 // onYouTubeIframeAPIReady
-window.onYouTubeIframeAPIReady = function()  {
-    setTimeout( function(){
-        movieIndex = randomMovies.indexOf(randomMovie);
+function onYouTubeIframeAPIReady() {
+    movieIndex = randomMovies.indexOf(randomMovie);
 
-        player = new YT.Player('player', {
-        videoId: movieIDs[movieIndex],
-        playerVars: {
-            controls: 1, // Show video controls
+    player = new YT.Player('player', {
+    videoId: movieIDs[movieIndex],
+    playerVars: {
+        controls: 1, // Show video controls
+    }
+    });
+
+    setTimeout( function(){
+        console.log('Timeout done')
+        if (player === undefined) {
+            console.log('Player failed message');
+            modalContent.textContent = 'Sorry, failed to load video.\nPlease try again.';
         }
-        });
-        console.log(player);
-    },100);
+    },5000);
 }
 
 // Var Selectors from HTMLd
@@ -181,7 +187,7 @@ openButton.addEventListener('click', function() {
 
 // Event listener to close modal
 closeButton.addEventListener('click', function() {
-    player.stopVideo();
+    player?.stopVideo();
     modal.style.display = 'none';
 });
 
