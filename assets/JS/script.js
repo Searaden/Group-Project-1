@@ -22,12 +22,15 @@ const youtubeAPI = 'https://www.googleapis.com/youtube/v3/videos?';
 // Global variable initalization
 var randomIndex;
 var randomMovie;
+var randomID;
 var apiKey = [];
 var player = undefined;
 
-// Baseline movie array and respective IDs
-const baselineMovies = ["The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"];
-const movieIDs = ['9-dIdFXeFhs', 'CkNB0w1fYKk', 'jE5dJDgZ644', 'opiCMIN3PNg', 'QITzuunu-SU', 'ETiSMS4i1as']
+// Object to store movies and their respective Youtube trailer video IDs
+const baselineMovies = {
+    names: ["The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"],
+    ids: ['9-dIdFXeFhs', 'CkNB0w1fYKk', 'jE5dJDgZ644', 'opiCMIN3PNg', 'QITzuunu-SU', 'ETiSMS4i1as']
+}
 
 // Get randomMovies from local storage if it exists, otherwise use baselineMovies
 var randomMovies = JSON.parse(localStorage.getItem("randomMovies"));
@@ -40,11 +43,14 @@ if (!randomMovies) {
 
 // Random Movie Generator
 //Checks to see if movies have the seen value of "true"
-var unseenMovies = randomMovies.filter(function(movie) {        
+var unseenMovies = randomMovies.names.filter(function(movie) {        
     return !movie.seen;
-  });
+});
+var unseenIDs = randomMovies.ids.filter(function(movie) {        
+    return !movie.seen;
+});
   
-  if (unseenMovies.length === 0) {
+if (unseenMovies.length === 0) {
     // Hide the buttons once you reach the final page
     trailerButton.style.display = "none";
     seenButton.style.display = "none";
@@ -65,24 +71,27 @@ var unseenMovies = randomMovies.filter(function(movie) {
     messageElement.style.fontWeight = "Bolder";
     main.appendChild(messageElement);
 
-    // Else applies a new movie
-  } else {
+// Else applies a new movie
+} else {
     randomIndex = Math.floor(Math.random() * unseenMovies.length);
+    console.log(randomIndex);
     randomMovie = unseenMovies[randomIndex];
-  }
+    randomID = unseenIDs[randomIndex];
+}
   
 //Seen Variable. This will add a listener and save a variable to local storage
-seenButton.addEventListener("click", function() {
-    // Saves the "seen" variable to local storage
-    localStorage.setItem("seen", "true");
-
-    // Find the movie randomly selected in the array
-    randomIndex = randomMovies.indexOf(randomMovie);
+seenButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    randomIndex = randomMovies.names.indexOf(randomMovie);
 
     // Checks to see if the movie is in the array. If it is it will remove it and update the movie list for the user
     if (randomIndex !== -1) {
-        randomMovies.splice(randomIndex, 1, {
+        randomMovies.names.splice(randomIndex, 1, {
             title: randomMovie,
+            seen: true
+        });
+        randomMovies.ids.splice(randomIndex, 1, {
+            title: randomID,
             seen: true
         });
     }
@@ -136,7 +145,7 @@ async function renderRandom() {
 // Render movie name and poster to the best of the worst using data from OMDb API fetch
 async function renderCards() { 
     for (var i = 0; i < movieCards.children.length; i++) {
-        await fetch(omdbAPI + baselineMovies[i] + '&apiKey=' + apiKey[0])
+        await fetch(omdbAPI + baselineMovies.names[i] + '&apiKey=' + apiKey[0])
         .then(function (response) {
             return response.json();
         })
@@ -155,7 +164,7 @@ async function renderCards() {
 // Youtube IFrame funciton for embeded player
 async function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-    videoId: movieIDs[randomIndex],
+    videoId: randomID,
     playerVars: {
         controls: 1, // Show video controls
     }
@@ -165,7 +174,7 @@ async function onYouTubeIframeAPIReady() {
 // Render view and like counts to the modal using data from Youtube Data API fetch
 async function renderYTData() {
     if (unseenMovies.length != 0) {
-        await fetch(youtubeAPI + 'part=statistics&id=' + movieIDs[randomIndex] + '&key=' + apiKey[1])
+        await fetch(youtubeAPI + 'part=statistics&id=' + randomID + '&key=' + apiKey[1])
         .then(function (response) {
             return response.json();
         })
