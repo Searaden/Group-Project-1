@@ -1,30 +1,3 @@
-// Movie trailer list: "The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"
-const movieIDs = ['9-dIdFXeFhs', 'CkNB0w1fYKk', 'jE5dJDgZ644', 'opiCMIN3PNg', 'QITzuunu-SU', 'ETiSMS4i1as']
-var modalContent = document.querySelector('.modal-content')
-var player = undefined;
-var movieIndex;
-
-// onYouTubeIframeAPIReady
-function onYouTubeIframeAPIReady() {
-    movieIndex = randomMovies.indexOf(randomMovie);
-
-    player = new YT.Player('player', {
-    videoId: movieIDs[movieIndex],
-    playerVars: {
-        controls: 1, // Show video controls
-    }
-    });
-
-    console.log(player);
-    setTimeout( function(){
-        console.log('Timeout done')
-        if (player === undefined) {
-            console.log('Player failed message');
-            modalContent.textContent = 'Sorry, failed to load video.\nPlease try again.';
-        }
-    },5000);
-}
-
 // Var Selectors from HTMLd
 var seenEl = document.querySelector("#seen");
 var rerollEl = document.querySelector('#reroll');
@@ -175,6 +148,39 @@ async function renderCards() {
     }
 }
 
+// Movie trailer list: "The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"
+const movieIDs = ['9-dIdFXeFhs', 'CkNB0w1fYKk', 'jE5dJDgZ644', 'opiCMIN3PNg', 'QITzuunu-SU', 'ETiSMS4i1as']
+var modalContent = document.querySelector('.modal-content');
+var player = undefined;
+var movieIndex = randomMovies.indexOf(randomMovie);
+const youtubeAPI = 'https://www.googleapis.com/youtube/v3/videos?';
+
+// onYouTubeIframeAPIReady
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+    videoId: movieIDs[movieIndex],
+    playerVars: {
+        controls: 1, // Show video controls
+    }
+    });
+}
+
+async function renderYTData() {
+    await fetch(youtubeAPI + 'part=statistics&id=' + movieIDs[movieIndex] + '&key=' + apiKey[1])
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        var p1 = document.createElement('p');
+        var p2 = document.createElement('p');
+        p1.textContent = 'Views: ' + data.items[0].statistics.viewCount;
+        p2.textContent = 'Likes: ' + data.items[0].statistics.likeCount;
+        modalContent.append(p1);
+        modalContent.append(p2);
+    })
+}
+
 // Modal selectors
 var modal = document.querySelector(".modal");
 var closeButton = document.querySelector(".close");
@@ -195,3 +201,4 @@ closeButton.addEventListener('click', function() {
 init();
 renderRandom();
 renderCards();
+renderYTData();
