@@ -15,6 +15,7 @@ function onYouTubeIframeAPIReady() {
     }
     });
 
+    console.log(player);
     setTimeout( function(){
         console.log('Timeout done')
         if (player === undefined) {
