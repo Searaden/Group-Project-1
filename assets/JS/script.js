@@ -77,7 +77,7 @@ seenButton.addEventListener("click", function() {
     localStorage.setItem("seen", "true");
 
     // Find the movie randomly selected in the array
-    var randomIndex = randomMovies.indexOf(randomMovie);
+    randomIndex = randomMovies.indexOf(randomMovie);
 
     // Checks to see if the movie is in the array. If it is it will remove it and update the movie list for the user
     if (randomIndex !== -1) {
