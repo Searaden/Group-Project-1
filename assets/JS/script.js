@@ -20,10 +20,10 @@ const omdbAPI = 'https://www.omdbapi.com/?t=';
 const youtubeAPI = 'https://www.googleapis.com/youtube/v3/videos?';
 
 // Global variable initalization
+var randomIndex;
 var randomMovie;
 var apiKey = [];
 var player = undefined;
-var movieIndex = randomMovies.indexOf(randomMovie);
 
 // Baseline movie array and respective IDs
 const baselineMovies = ["The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"];
@@ -64,10 +64,11 @@ var unseenMovies = randomMovies.filter(function(movie) {
     messageElement.style.fontSize = "50px";
     messageElement.style.fontWeight = "Bolder";
     main.appendChild(messageElement);
-    // applies a new movie
+
+    // Else applies a new movie
   } else {
-    var randomIndex = Math.floor(Math.random() * unseenMovies.length);
-    var randomMovie = unseenMovies[randomIndex];
+    randomIndex = Math.floor(Math.random() * unseenMovies.length);
+    randomMovie = unseenMovies[randomIndex];
   }
   
 //Seen Variable. This will add a listener and save a variable to local storage
@@ -122,12 +123,12 @@ async function renderRandom() {
             return response.json();
         })
         .then(function (data) {
-            main.children[0].textContent = data.Title;
+            mainTitle.textContent = data.Title;
             modalTitle.textContent = data.Title;
-            main.children[1].src = data.Poster;
-            main.children[2].textContent = data.Plot;
-            main.children[3].textContent = "The IMDB Rating is: " + data.imdbRating;
-            main.children[4].textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
+            mainPoster.src = data.Poster;
+            mainDescription.textContent = data.Plot;
+            mainIMDB.textContent = "The IMDB Rating is: " + data.imdbRating;
+            mainRottenTomatoes.textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
         })
     };
 }
@@ -152,9 +153,9 @@ async function renderCards() {
 }
 
 // Youtube IFrame funciton for embeded player
-function onYouTubeIframeAPIReady() {
+async function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-    videoId: movieIDs[movieIndex],
+    videoId: movieIDs[randomIndex],
     playerVars: {
         controls: 1, // Show video controls
     }
@@ -163,19 +164,20 @@ function onYouTubeIframeAPIReady() {
 
 // Render view and like counts to the modal using data from Youtube Data API fetch
 async function renderYTData() {
-    await fetch(youtubeAPI + 'part=statistics&id=' + movieIDs[movieIndex] + '&key=' + apiKey[1])
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-        var p1 = document.createElement('p');
-        var p2 = document.createElement('p');
-        p1.textContent = 'Views: ' + data.items[0].statistics.viewCount;
-        p2.textContent = 'Likes: ' + data.items[0].statistics.likeCount;
-        modalContent.append(p1);
-        modalContent.append(p2);
-    })
+    if (unseenMovies.length != 0) {
+        await fetch(youtubeAPI + 'part=statistics&id=' + movieIDs[randomIndex] + '&key=' + apiKey[1])
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            var p1 = document.createElement('p');
+            var p2 = document.createElement('p');
+            p1.textContent = 'Views: ' + data.items[0].statistics.viewCount;
+            p2.textContent = 'Likes: ' + data.items[0].statistics.likeCount;
+            modalContent.append(p1);
+            modalContent.append(p2);
+        })
+    }
 }
 
 // Event listener to open modal to view trailer
