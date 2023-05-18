@@ -1,3 +1,23 @@
+// Movie trailer list: "The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"
+const movieIDs = ['9-dIdFXeFhs', 'CkNB0w1fYKk', 'jE5dJDgZ644', 'opiCMIN3PNg', 'QITzuunu-SU', 'ETiSMS4i1as']
+var player;
+var movieIndex;
+
+// onYouTubeIframeAPIReady
+window.onYouTubeIframeAPIReady = function()  {
+    setTimeout( function(){
+        movieIndex = randomMovies.indexOf(randomMovie);
+
+        player = new YT.Player('player', {
+        videoId: movieIDs[movieIndex],
+        playerVars: {
+            controls: 1, // Show video controls
+        }
+        });
+        console.log(player);
+    },100);
+}
+
 // Var Selectors from HTMLd
 var seenEl = document.querySelector("#seen");
 var rerollEl = document.querySelector('#reroll');
@@ -56,26 +76,6 @@ var unseenMovies = randomMovies.filter(function(movie) {
     var randomIndex = Math.floor(Math.random() * unseenMovies.length);
     var randomMovie = unseenMovies[randomIndex];
   }
-
-// Movie trailer list: "The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"
-const movieIDs = ['9-dIdFXeFhs', 'CkNB0w1fYKk', 'jE5dJDgZ644', 'opiCMIN3PNg', 'QITzuunu-SU', 'ETiSMS4i1as']
-var player;
-var movieIndex;
-
-// onYouTubeIframeAPIReady
-function onYouTubeIframeAPIReady()  {
-    setTimeout( function(){
-        movieIndex = randomMovies.indexOf(randomMovie);
-
-        player = new YT.Player('player', {
-        videoId: movieIDs[movieIndex],
-        playerVars: {
-            controls: 1, // Show video controls
-        },
-        });
-        console.log(player);
-    },100);
-}
   
 //Seen Variable. This will add a listener and save a variable to local storage
 seenEl.addEventListener("click", function() {
