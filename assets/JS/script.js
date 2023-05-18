@@ -64,15 +64,17 @@ var movieIndex;
 
 // onYouTubeIframeAPIReady
 function onYouTubeIframeAPIReady()  {
-    movieIndex = randomMovies.indexOf(randomMovie);
+    setTimeout( function(){
+        movieIndex = randomMovies.indexOf(randomMovie);
 
-    player = new YT.Player('player', {
-      videoId: movieIDs[movieIndex],
-      playerVars: {
-        controls: 1, // Show video controls
-      },
-    });
-    console.log(player);
+        player = new YT.Player('player', {
+        videoId: movieIDs[movieIndex],
+        playerVars: {
+            controls: 1, // Show video controls
+        },
+        });
+        console.log(player);
+    },100);
 }
   
 //Seen Variable. This will add a listener and save a variable to local storage
