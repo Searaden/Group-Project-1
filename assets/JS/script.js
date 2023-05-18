@@ -1,5 +1,6 @@
 // Var Selectors from HTMLd
 var seenEl = document.querySelector("#seen");
+var rerollEl = document.querySelector('#reroll');
 
 // Baseline movie array
 var baselineMovies = ["The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"];
@@ -139,7 +140,13 @@ seenEl.addEventListener("click", function() {
     location.reload();
 });
 
-
+//Refoll Variable. This will add a listener for rerolling to the next movie
+rerollEl.addEventListener("click", function() 
+{
+ 
+  // Reloads the page to reflect the changes
+  location.reload();
+});
 
 var main = document.querySelector('main');
 
@@ -221,6 +228,5 @@ closeButton.addEventListener('click', function() {
 });
 
 init();
-roomReady();
 renderRandom();
 renderCards();
