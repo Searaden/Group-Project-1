@@ -66,14 +66,13 @@ h2 {
     justify-content: center;
 }
 
+
 #userRate > * {
-    color: white;
+
     font-size: 25px;
     margin-right: 100px;
     margin-left: 100px;
     transition: all 0.2s ease-in-out;
-    background-color: #1b0c705e;
-    border-color: #37235c;
     border-radius: 8px;
 }
 
