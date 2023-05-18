@@ -126,8 +126,6 @@ async function renderRandom() {
     };
 }
 
-
-
 // Render movie name and poster to the best of the worst using data from OMDb API fetch
 async function renderCards() { 
     var movieCards = document.querySelector('article');
@@ -155,7 +153,7 @@ var player = undefined;
 var movieIndex = randomMovies.indexOf(randomMovie);
 const youtubeAPI = 'https://www.googleapis.com/youtube/v3/videos?';
 
-// onYouTubeIframeAPIReady
+// Youtube iFrame funciton for embeded player
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
     videoId: movieIDs[movieIndex],
@@ -165,6 +163,7 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
+// Render view and like counts to the modal using data from Youtube Data API fetch
 async function renderYTData() {
     await fetch(youtubeAPI + 'part=statistics&id=' + movieIDs[movieIndex] + '&key=' + apiKey[1])
     .then(function (response) {
