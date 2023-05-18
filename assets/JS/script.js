@@ -49,17 +49,71 @@ var unseenMovies = randomMovies.filter(function(movie) {
   }
 
 //Youtube API Implementation 
-const videoId = '9-dIdFXeFhs';
 
-function onYouTubeIframeAPIReady() {
+// onYouTubeIframeAPIReady
+
+
+function roomReady () {
     new YT.Player('player', {
-      videoId: videoId,
+      videoId: '9-dIdFXeFhs',
       playerVars: {
         autoplay: 1, // Auto-start the video
         controls: 1, // Show video controls
       },
     });
   }
+  
+
+function troll2Ready() {
+    new YT.Player('player', {
+      videoId: 'CkNB0w1fYKk',
+      playerVars: {
+        autoplay: 1, // Auto-start the video
+        controls: 1, // Show video controls
+      },
+    });
+  }
+
+  function birdemicReady() {
+      new YT.Player('player', {
+        videoId: 'jE5dJDgZ644',
+        playerVars: {
+          autoplay: 1, // Auto-start the video
+          controls: 1, // Show video controls
+        },
+      });
+    }
+
+function jawsReady() {
+    new YT.Player('player', {
+      videoId: 'nf2K_645qtw',
+      playerVars: {
+        autoplay: 1, // Auto-start the video
+        controls: 1, // Show video controls
+      },
+    });
+  }
+
+function wickerReady() {
+    new YT.Player('player', {
+      videoId: 'QITzuunu-SU',
+      playerVars: {
+        autoplay: 1, // Auto-start the video
+        controls: 1, // Show video controls
+      },
+    });
+  }
+
+function klownsReady() {
+    new YT.Player('player', {
+      videoId: 'ETiSMS4i1as',
+      playerVars: {
+        autoplay: 1, // Auto-start the video
+        controls: 1, // Show video controls
+      },
+    });
+  }
+
 
   
 //Seen Variable. This will add a listener and save a variable to local storage
@@ -167,5 +221,6 @@ closeButton.addEventListener('click', function() {
 });
 
 init();
+roomReady();
 renderRandom();
 renderCards();
