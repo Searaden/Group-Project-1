@@ -1,6 +1,10 @@
 // Var Selectors from HTMLd
 var seenEl = document.querySelector("#seen");
 var rerollEl = document.querySelector('#reroll');
+var trailerButton = document.querySelector('#trailer');
+var seenButton = document.querySelector('#seen');
+var rerollButton = document.querySelector('#reroll');
+
 
 // Baseline movie array
 var baselineMovies = ["The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"];
@@ -23,6 +27,11 @@ var unseenMovies = randomMovies.filter(function(movie) {
   
   if (unseenMovies.length === 0) {
     console.log("No unseen movies left!");
+  
+    // Hide the buttons once you reach the final page
+    trailerButton.style.display = "none";
+    seenButton.style.display = "none";
+    rerollButton.style.display = "none";
     
     // Hide the content within the main section
     var mainTitle = document.querySelector('#randomTitle');
@@ -39,7 +48,10 @@ var unseenMovies = randomMovies.filter(function(movie) {
 
     // Display a message or perform any other desired action
     var messageElement = document.createElement("p");
-    messageElement.textContent = "You have seen all the videos!";
+    messageElement.textContent = "🌟You have seen all the movies!🌟";
+    messageElement.style.color = "white";
+    messageElement.style.fontSize = "50px";
+    messageElement.style.fontWeight = "Bolder";
     document.querySelector('main').appendChild(messageElement);
     // applies a new movie
   } else {
