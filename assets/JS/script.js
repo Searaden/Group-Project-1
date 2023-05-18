@@ -26,8 +26,6 @@ var unseenMovies = randomMovies.filter(function(movie) {
   });
   
   if (unseenMovies.length === 0) {
-    console.log("No unseen movies left!");
-  
     // Hide the buttons once you reach the final page
     trailerButton.style.display = "none";
     seenButton.style.display = "none";
@@ -57,8 +55,6 @@ var unseenMovies = randomMovies.filter(function(movie) {
   } else {
     var randomIndex = Math.floor(Math.random() * unseenMovies.length);
     var randomMovie = unseenMovies[randomIndex];
-  
-    console.log("Random movie: " + randomMovie.title);
   }
 
 // Movie trailer list: "The Room", "Troll 2", "Birdemic: Shock And Terror" , "Jaws: The Revenge" , "The Wicker Man" , "Killer Klowns From Outer Space"
@@ -76,6 +72,7 @@ function onYouTubeIframeAPIReady()  {
         controls: 1, // Show video controls
       },
     });
+    console.log(player);
 }
   
 //Seen Variable. This will add a listener and save a variable to local storage
@@ -137,15 +134,13 @@ async function renderRandom() {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             main.children[0].textContent = data.Title;
             modalTitle.textContent = data.Title;
             main.children[1].src = data.Poster;
             main.children[2].textContent = data.Plot;
             main.children[3].textContent = "The IMDB Rating is: " + data.imdbRating;
             main.children[4].textContent = "Rotten Tomatoes Score: " + data.Ratings[1].Value + "🍅";
-        })} else {
-            console.log("no movies left");
+        })
     };
 }
 
@@ -160,7 +155,6 @@ async function renderCards() {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             var p = document.createElement('p');
             p.textContent = data.Title;
             movieCards.children[i].append(p);
