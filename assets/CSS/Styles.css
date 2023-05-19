@@ -1,6 +1,5 @@
 body {
     font-family: Verdana, Tahoma, sans-serif;
-    margin: 10px;
     background-image: url("../IMG/stars.jpg");
     display: flex;
     flex-direction: column;
