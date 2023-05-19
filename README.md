@@ -36,6 +36,8 @@ We tried to keep the website as simplistic as possible for the user.
 
 ![Alt Text](/assets/IMG/Web4.png)
 
+- NOTE: Repeated fast refreshes may cause errors with loading trailers. Refresh to reload the movie
+
 ---
 ## Credits
 
@@ -54,6 +56,7 @@ We tried to keep the website as simplistic as possible for the user.
 
 - In the future, we want to add the entire library that is available on OMDB. We want to be able to add a genre link, so that we arent focusing on just the list of 6 movies that we added. By adding the entire list of genres, we would have an almost limitless amount of movies. 
 - We also want to add a dynamic way to add youtube links, instead of us having to manually apply each one.
+- We need to fix a bug with error loading videos due to reloading the page too fast
 
 ---
 ## Elevator-Pitch
