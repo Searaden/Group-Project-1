@@ -36,7 +36,7 @@ We tried to keep the website as simplistic as possible for the user.
 
 ![Alt Text](/assets/IMG/Web4.png)
 
-- NOTE: Repeated fast refreshes may cause errors with loading trailers. Refresh to reload the movie
+- NOTE: Repeated fast refreshes may cause errors with loading trailers. Refresh to reload the trailer
 
 ---
 ## Credits
