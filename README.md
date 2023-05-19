@@ -16,7 +16,7 @@ Provide a short description explaining the what, why, and how of your project. U
     * It solves the problem of spending countless hours (over a period of time) scrolling to FIND a movie, instead of just watching the movies. Leaving more time to watch more movies.
 - What did you learn?
     * The most important thing we learned was how to work together. Committing through github as a group was probably the most difficult task. Learning how to respect each others time, and not commit over each other was the most difficult.
-    * Secondly, we learned how to use two different API's (OMDB and Youtube). Both came with their own seperate challenges, but we ultimately were able to get through them together, as a team.
+    * Secondly, we learned how to use two different API's (OMDB and Youtube). Both came with their own seperate challenges, but we ultimately were able to get gthrough them together, as a team.
     * The most fascinating thing we learned was how to imbed youtube links into a modal, and link videos to our applications/websites!
 ---
 
