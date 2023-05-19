@@ -161,20 +161,23 @@ async function renderCards() {
     }
 }
 
-// Youtube IFrame funciton for embeded player
+// Youtube IFrame function for embedded player
 async function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-    videoId: randomID,
-    playerVars: {
-        controls: 1, // Show video controls
+        videoId: randomID,
+        playerVars: {
+            controls: 1 // Show video controls
         }
     });
-    //An error occurs when the user refreshes the page too much. Apply error message when video wont load.
-    if (player === undefined){
-        var errorMessage = document.createTextNode('Error loading video. Please reload the page.');
+
+    if (player === undefined) {
+        // Append the error message to the modal content
+        var errorMessage = document.createElement('p');
+        errorMessage.textContent = 'Error loading video. Please reload the page.';
         modalContent.appendChild(errorMessage);
     }
 }
+
 
 // Render view and like counts to the modal using data from Youtube Data API fetch
 async function renderYTData() {
