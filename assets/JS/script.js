@@ -167,8 +167,13 @@ async function onYouTubeIframeAPIReady() {
     videoId: randomID,
     playerVars: {
         controls: 1, // Show video controls
-    }
+        }
     });
+    //An error occurs when the user refreshes the page too much. Apply error message when video wont load.
+    if (player === undefined){
+        var errorMessage = document.createTextNode('Error loading video. Please reload the page.');
+        modalContent.appendChild(errorMessage);
+    }
 }
 
 // Render view and like counts to the modal using data from Youtube Data API fetch
