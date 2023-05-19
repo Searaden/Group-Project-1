@@ -16,7 +16,7 @@ Provide a short description explaining the what, why, and how of your project. U
     * It solves the problem of spending countless hours (over a period of time) scrolling to FIND a movie, instead of just watching the movies. Leaving more time to watch more movies.
 - What did you learn?
     * The most important thing we learned was how to work together. Committing through github as a group was probably the most difficult task. Learning how to respect each others time, and not commit over each other was the most difficult.
-    * Secondly, we learned how to use two different API's (OMDB and Youtube). Both came with their own seperate challenges, but we ultimately were able to get through them together, as a team.
+    * Secondly, we learned how to use two different API's (OMDB and Youtube). Both came with their own seperate challenges, but we ultimately were able to get gthrough them together, as a team.
     * The most fascinating thing we learned was how to imbed youtube links into a modal, and link videos to our applications/websites!
 ---
 
@@ -36,6 +36,8 @@ We tried to keep the website as simplistic as possible for the user.
 
 ![Alt Text](/assets/IMG/Web4.png)
 
+- NOTE: Repeated fast refreshes may cause errors with loading trailers. Refresh to reload the trailer
+
 ---
 ## Credits
 
@@ -54,6 +56,7 @@ We tried to keep the website as simplistic as possible for the user.
 
 - In the future, we want to add the entire library that is available on OMDB. We want to be able to add a genre link, so that we arent focusing on just the list of 6 movies that we added. By adding the entire list of genres, we would have an almost limitless amount of movies. 
 - We also want to add a dynamic way to add youtube links, instead of us having to manually apply each one.
+- We need to fix a bug with error loading videos due to reloading the page too fast
 
 ---
 ## Elevator-Pitch
